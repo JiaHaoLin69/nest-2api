@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | Películas y Pokémon</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="navbar">
+            <div class="navbar-brand">
+                <h1>Nest Peli y PokeAPI</h1>
+            </div>
+            <div class="tabs">
+                <button class="tab-btn active" data-target="movies-section">
+                    Películas
+                </button>
+                <button class="tab-btn" data-target="pokemon-section">
+                    Pokémon
+                </button>
+            </div>
+        </header>
+
+        <main class="content-area">
+
+            <!-- MOVIES SECTION -->
+            <section id="movies-section" class="data-section active">
+                <div class="section-header">
+                    <h2>Base de Datos de Películas</h2>
+                    <p>Explora y filtra la colección de películas</p>
+                </div>
+
+                <div class="filter-card glass-panel">
+                    <form id="movies-filter-form" class="filter-form">
+                        <div class="form-group">
+                            <label for="movie-title">Título</label>
+                            <input type="text" id="movie-title" placeholder="Ej. La La Land...">
+                        </div>
+                        <div class="form-group row-group">
+                            <div class="sub-group">
+                                <label for="movie-year-from">Año Desde</label>
+                                <input type="number" id="movie-year-from" placeholder="YYYY" min="1900" max="2100">
+                            </div>
+                            <div class="sub-group">
+                                <label for="movie-year-to">Año Hasta</label>
+                                <input type="number" id="movie-year-to" placeholder="YYYY" min="1900" max="2100">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                            <button type="button" id="reset-movies" class="btn btn-secondary">Restablecer</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-container glass-panel">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Director</th>
+                                <th>Género</th>
+                                <th>Fecha de Estreno</th>
+                                <th>Duración (min)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="movies-table-body">
+                            <!-- Rows will be populated via JS -->
+                        </tbody>
+                    </table>
+                    <div id="movies-loading" class="loading-spinner" style="display: none;">Cargando...</div>
+                </div>
+            </section>
+
+            <!-- POKEMON SECTION -->
+            <section id="pokemon-section" class="data-section">
+                <div class="section-header">
+                    <h2>Caja Pokémon</h2>
+                    <p>Busca tus Pokémon favoritos por estadísticas</p>
+                </div>
+
+                <div class="filter-card glass-panel">
+                    <form id="pokemon-filter-form" class="filter-form">
+                        <div class="form-group">
+                            <label for="pokemon-name">Nombre</label>
+                            <input type="text" id="pokemon-name" placeholder="Ej. Arcanine...">
+                        </div>
+                        <div class="form-group">
+                            <label for="pokemon-type">Tipo</label>
+                            <input type="text" id="pokemon-type" placeholder="Ej. Fuego...">
+                        </div>
+                        <div class="form-group">
+                            <label for="pokemon-hp">PV Mayor A</label>
+                            <input type="number" id="pokemon-hp" placeholder="Ej. 50" min="0">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Filtrar</button>
+                            <button type="button" id="reset-pokemon" class="btn btn-secondary">Restablecer</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="pokemon-grid" id="pokemon-grid-container">
+                    <!-- Cards will be populated via JS -->
+                </div>
+                <div id="pokemon-loading" class="loading-spinner" style="display: none;">Cargando...</div>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- Error/Toast Notification -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
